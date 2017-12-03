@@ -1,5 +1,6 @@
 from datetime import datetime
 import math
+import uuid
 
 from django.contrib.gis.geos import Point
 from django.db import IntegrityError
@@ -22,7 +23,7 @@ class InvalidLocation(ValueError):
         )
 
 
-def register_vehicle(uuid: str) -> vehicles_models.Vehicle:
+def register_vehicle(uuid: uuid.UUID) -> vehicles_models.Vehicle:
     """
     (Re)register the Vehicle with the given UUID.
     """

@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.gis.db import models
 
 
@@ -5,8 +7,8 @@ class Vehicle(models.Model):
     """
     Model to store vehicle information and location details.
     """
-    id = models.CharField(
-        primary_key=True, max_length=36,
+    id = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False,
         help_text='Custom primary key represented by a UUID'
     )
     active = models.BooleanField(

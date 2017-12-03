@@ -15,7 +15,7 @@ class UpdateLocationTests(TestCase):
     """
 
     def setUp(self):
-        self.vehicle = vehicles_models.Vehicle.objects.create(id='a')
+        self.vehicle = vehicles_models.Vehicle.objects.create()
         self.dt = timezone.make_aware(datetime(2017, 12, 1))
         self.location_2 = vehicles_conf.CITY_CENTER.clone()
         self.location_2.y = vehicles_conf.CITY_CENTER.y - 0.01

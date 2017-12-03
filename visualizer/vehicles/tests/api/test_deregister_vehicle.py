@@ -10,7 +10,7 @@ class DeregisterVehicleTests(TestCase):
     """
 
     def test_removes_active_flag(self):
-        vehicle = vehicles_models.Vehicle.objects.create(id='a', active=True)
+        vehicle = vehicles_models.Vehicle.objects.create(active=True)
         vehicles_api.deregister_vehicle(vehicle)
         vehicle.refresh_from_db()
         self.assertFalse(vehicle.active)
@@ -23,7 +23,7 @@ class DeregisterVehicleTests(TestCase):
         location to determine the new bearing.
         """
         vehicle = vehicles_models.Vehicle.objects.create(
-            id='a', active=True,
+            active=True,
             current_location=Point(1, 2),
             current_bearing=90,
         )
@@ -33,9 +33,7 @@ class DeregisterVehicleTests(TestCase):
         self.assertIsNone(vehicle.current_bearing)
 
     def test_raises_exception_when_already_inactive(self):
-        vehicle = vehicles_models.Vehicle.objects.create(
-            id='a', active=False,
-        )
+        vehicle = vehicles_models.Vehicle.objects.create(active=False)
 
         with self.assertRaisesRegexp(ValueError, 'already deregistered'):
             vehicles_api.deregister_vehicle(vehicle)
