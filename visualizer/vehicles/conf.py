@@ -22,9 +22,10 @@ CITY_CENTER.srid = 4326
 BOUNDARY_RADIUS_KM = 3.5
 
 # The city's polygon as expressed in lat/lon coordinates
-CITY_POLYGON = (
-    CITY_CENTER
-    .transform(SRID_BERLIN, clone=True)
-    .buffer(BOUNDARY_RADIUS_KM * 1000)
-    .transform(SRID_DEFAULT, clone=True)
-)
+def get_city_polygon():
+    return (
+        CITY_CENTER
+        .transform(SRID_BERLIN, clone=True)
+        .buffer(BOUNDARY_RADIUS_KM * 1000)
+        .transform(SRID_DEFAULT, clone=True)
+    )

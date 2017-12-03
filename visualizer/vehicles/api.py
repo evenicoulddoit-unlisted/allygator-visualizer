@@ -85,7 +85,7 @@ def location_is_valid(location: Point) -> bool:
     """
     Return whether the given location is within the expected "city boundaries".
     """
-    return vehicle_conf.CITY_POLYGON.contains(location)
+    return vehicle_conf.get_city_polygon().contains(location)
 
 
 def validate_location(location: Point):

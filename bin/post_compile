@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+psql $DATABASE_URL -c 'CREATE EXTENSION postgis;' &>/dev/null || true
+python visualizer/manage.py migrate --noinput

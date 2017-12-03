@@ -1,0 +1,38 @@
+{
+  "name": "Allygator visualizer",
+  "description": "Door2Door Full-Stack code challenge",
+  "keywords": ["door2door"],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "performance-m"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:standard-0"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/dschep/heroku-geo-buildpack.git"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": {
+      "description": "Use the production configuration",
+      "value": "visualizer.settings.prod"
+    },
+    "SECRET_KEY": {
+      "description": "Assign a unique secret key",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "The number of Gunicorn workers to run",
+      "value": "10"
+    }
+  }
+}
