@@ -45,7 +45,7 @@ class UpdateLocationTests(TestCase):
         self.assertEqual(dt_after, self.vehicle.last_update_at)
 
     def test_adds_vehicle_location_entry(self):
-        vehicles_api.update_location(
+        response = vehicles_api.update_location(
             self.vehicle, vehicles_conf.CITY_CENTER, self.dt
         )
         self.assertEqual(1, vehicles_models.VehicleLocation.objects.count())
@@ -54,6 +54,7 @@ class UpdateLocationTests(TestCase):
         self.assertEqual(vehicle_location.vehicle, self.vehicle)
         self.assertEqual(vehicles_conf.CITY_CENTER, vehicle_location.location)
         self.assertEqual(self.dt, vehicle_location.at)
+        self.assertEqual(response, vehicle_location)
 
     def test_sets_bearing_when_previous_location(self):
         dt_after = self.dt + timedelta(seconds=3)

@@ -76,7 +76,7 @@ def update_location(
     vehicle.last_update_at = at
     vehicle.save()
 
-    vehicles_models.VehicleLocation.objects.create(
+    return vehicles_models.VehicleLocation.objects.create(
         vehicle=vehicle, location=location, at=at
     )
 
@@ -106,4 +106,4 @@ def get_bearing_degrees(from_location: Point, to_location: Point) -> int:
 
     bearing = math.atan2(y, x)
     bearing = math.degrees(bearing)
-    return (bearing + 360) % 360
+    return int((bearing + 360) % 360)
