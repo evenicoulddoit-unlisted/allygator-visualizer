@@ -5,7 +5,10 @@ class Vehicle(models.Model):
     """
     Model to store vehicle information and location details.
     """
-    id = models.CharField(primary_key=True, max_length=36)
+    id = models.CharField(
+        primary_key=True, max_length=36,
+        help_text='Custom primary key represented by a UUID'
+    )
     active = models.BooleanField(
         default=True, db_index=True,
         help_text='Whether the vehicle in active service'
