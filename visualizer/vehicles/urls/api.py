@@ -13,8 +13,14 @@ urlpatterns = [
     path(
         '/<uuid:id>',
         include([
-            path('', vehicles_views_api.DeregisterVehicle.as_view()),
-            path('/locations', vehicles_views_api.LocationUpdate.as_view())
-        ])
+            path(
+                '', vehicles_views_api.DeregisterVehicle.as_view(),
+                name='deregister'
+            ),
+            path(
+                '/locations', vehicles_views_api.LocationUpdate.as_view(),
+                name='location-update'
+            )
+        ]),
     ),
 ]
