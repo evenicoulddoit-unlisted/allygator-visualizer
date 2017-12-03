@@ -59,8 +59,7 @@ def update_location(
     If a previous location was set, the vehicle's bearing is also calculated
     from comparing it with the given location.
     """
-    if not location_is_valid(location):
-        raise InvalidLocation(location)
+    validate_location(location)
 
     # Store the current bearing on the vehicle if it had a previous location,
     # ensure that the latest update is after the previous
@@ -89,6 +88,14 @@ def location_is_valid(location: Point) -> bool:
     return vehicle_conf.CITY_POLYGON.contains(location)
 
 
+def validate_location(location: Point):
+    """
+    Conditionally raise InvalidLocation based on the given location.
+    """
+    if not location_is_valid(location):
+        raise InvalidLocation(location)
+
+
 def get_bearing_degrees(from_location: Point, to_location: Point) -> int:
     """
     Return the bearing expressed in degrees between the given points.
@@ -108,3 +115,10 @@ def get_bearing_degrees(from_location: Point, to_location: Point) -> int:
     bearing = math.atan2(y, x)
     bearing = math.degrees(bearing)
     return int((bearing + 360) % 360)
+
+
+def point_from_lat_lng(lat: float, lng: float) -> Point:
+    """
+    Return a Point with the default SRID from the given latitude/longitude.
+    """
+    return Point(lng, lat, srid=vehicle_conf.SRID_DEFAULT)
