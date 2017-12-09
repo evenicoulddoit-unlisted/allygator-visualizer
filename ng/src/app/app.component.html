@@ -1,0 +1,12 @@
+<header class="header">Allygator Visualizer</header>
+<agm-map [latitude]="map.center.lat"
+         [longitude]="map.center.lng"
+         [zoom]="map.zoom">
+  <agm-marker *ngFor="let vehicle of vehicles; trackBy: trackByVehicle"
+              [latitude]="vehicle.lat" [longitude]="vehicle.lng"
+              [iconUrl]="vehicle.iconUrl"
+              [title]="vehicle.id"></agm-marker>
+</agm-map>
+<aside class="error" *ngIf="error">
+  Server connection failed
+</aside>

@@ -1,0 +1,54 @@
+/**
+ * CSS Variables
+ */
+:root {
+  --color-primary: #337ab7;
+  --color-light: #fafafa;
+  --color-warning: #f44336;
+  --scale: 1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header,
+.error {
+  position: fixed;
+  transform: translateX(-50%);
+  left: 50%;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: var(--color-light);
+  font-weight: 700;
+}
+
+.header {
+  top: 2rem;
+  font-size: calc(var(--scale) * 1rem);
+  background-color: var(--color-primary);
+}
+
+.error {
+  bottom: 2rem;
+  background-color: var(--color-warning);
+  color: var(--color-light);
+}
+
+/**
+ * Basic media query support to increase header size
+ */
+@media screen and (min-width: 480px) {
+  :root {
+    --scale: 1.5;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  :root {
+    --scale: 2;
+  }
+}

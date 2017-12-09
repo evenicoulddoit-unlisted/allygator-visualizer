@@ -114,7 +114,7 @@ def get_bearing_degrees(from_location: Point, to_location: Point) -> int:
 
     bearing = math.atan2(y, x)
     bearing = math.degrees(bearing)
-    return int((bearing + 360) % 360)
+    return int((180 + bearing) % 360)
 
 
 def point_from_lat_lng(lat: float, lng: float) -> Point:

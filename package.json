@@ -1,0 +1,11 @@
+{
+  "name": "allygator-visualizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd ng && npm install"
+  },
+  "author": "",
+  "license": "ISC"
+}

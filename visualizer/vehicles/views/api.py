@@ -16,6 +16,14 @@ class VehicleAPIMixin:
     queryset = vehicles_models.Vehicle.objects.all()
     lookup_url_kwarg = 'id'
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        if self.request.GET.get('active') == 'true':
+            queryset = queryset.exclude(current_location__isnull=True)
+
+        return queryset
+
     def create(self, request, *args, **kwargs):
         super().create(request, *args, **kwargs)
         return Response(status=204)

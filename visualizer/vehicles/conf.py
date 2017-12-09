@@ -21,6 +21,7 @@ CITY_CENTER.srid = 4326
 # The radius size of the city
 BOUNDARY_RADIUS_KM = 3.5
 
+
 # The city's polygon as expressed in lat/lon coordinates
 def get_city_polygon():
     return (

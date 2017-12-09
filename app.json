@@ -15,6 +15,9 @@
   ],
   "buildpacks": [
     {
+      "url": "heroku/nodejs"
+    },
+    {
       "url": "https://github.com/dschep/heroku-geo-buildpack.git"
     },
     {
