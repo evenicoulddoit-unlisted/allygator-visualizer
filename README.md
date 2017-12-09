@@ -10,7 +10,7 @@
   * Hopefully however, it should demonstrate adequately my knowledge of both JS and CSS
 * In terms of technologies, I've used Python 3, GeoDjango and Django Rest Framework on the back-end, and Angular on the front-end
   * Many alternatives would have been perfectly suitable
-  * I chose these both because I know them well, and I know they are perfectly capable of creating testable, reliable, APIs with geo-support
+  * I chose these both because I know them well, and I know they are perfectly capable of creating testable and reliable APIs with geo-support
   * Given the fairly basic setup of the front-end, I need not have used a library. However, it does provide a clear structure on which to build, and ends up weighing only ~2kb, so seems perfectly reasonable
 
 ## Modelling
@@ -28,7 +28,12 @@
     This seemed a reasonable compromise given that the data is only really needed
     for the data science team
 * Because this is a write-heavy system, at scale it might be worth/necessary to consider
-  implementing some sort of queueing system, or database sharding to handle the traffic
+  implementing:
+  * Some sort of queueing system
+  * Load balancing
+  * Database sharding
+* A Berlin spacial-reference is used to construct a 3.5km polygon defining the
+  "city boundaries", and is used to validate incoming requests
 
 ## Testing / Code-Quality
 * Only the back-end was tested, due to time constraints
@@ -48,6 +53,7 @@
 
 ## Future Considerations
 * More research should be conducted to find web server technologies better places to handle many hundreds/thousands of concurrent requests
+* API authentication/throttling/validation
 
 ## Development
 * Ensure you have Python and NVM
