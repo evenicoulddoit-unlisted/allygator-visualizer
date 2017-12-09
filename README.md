@@ -12,6 +12,8 @@
   * Many alternatives would have been perfectly suitable
   * I chose these both because I know them well, and I know they are perfectly capable of creating testable and reliable APIs with geo-support
   * Given the fairly basic setup of the front-end, I need not have used a library. However, it does provide a clear structure on which to build, and ends up weighing only ~2kb, so seems perfectly reasonable
+* The Angular project can be found within the `ng` directory, and the Django project within `visualizer`
+  * A symlink within the Django static directory exposes the front-end
 
 ## Modelling
 * I thought at some length as to how to best model the data
